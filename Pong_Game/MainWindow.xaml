@@ -5,8 +5,29 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pong_Game"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Loaded="MainWindow_OnLoaded" WindowState="Maximized" WindowStyle="None"
+        PreviewKeyDown="Window_PreviewKeyDown" PreviewKeyUp="Window_PreviewKeyUp">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.Column="1" MinWidth="160" Background="LightGray">
+            <Button Padding="5" FontSize="16" Margin="10" Content="Quit Game" BorderBrush="Black" BorderThickness="1"
+                    DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click" />
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
+                <Label x:Name="xLabel" Content="Life: " FontSize="20" Margin="5" />
+                <Label x:Name="LifeLabel" FontSize="20" Content="0" Margin="5" />
+
+            </StackPanel>
+        </DockPanel>
+        <Canvas Cursor="No" Background="Black" x:Name="CanvasGame" HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch" Grid.Column="0">
+            <Ellipse x:Name="Ball" Height="30" Width="30" Fill="Chocolate" Canvas.Top="80" Canvas.Left="80" />
+            <Rectangle x:Name="Board" Width="150" Height="20" Fill="Coral" Canvas.Bottom="10" Canvas.Left="10" />
+            <Label Foreground="Red" x:Name="Label" Content="Game Over !!!" FontSize="40" FontWeight="Bold"
+                   Visibility="Hidden" />
+        </Canvas>
     </Grid>
 </Window>
