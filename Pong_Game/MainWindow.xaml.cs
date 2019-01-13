@@ -199,7 +199,6 @@ namespace Pong_Game
         {
             Action act = () =>
             {
-                var visible = false;
                 //go over all the blocks
                 foreach (var item in CanvasGame.Children)
                     if (item is Rectangle)
@@ -220,15 +219,24 @@ namespace Pong_Game
                             else if (Math.Abs(Canvas.GetLeft(rec) - (_ballLocX + 30)) <= Math.Abs(_xMove) ||
                                      Math.Abs(Canvas.GetLeft(rec) - (_ballLocX - 30)) <= Math.Abs(_xMove))
                                 _xMove *= -1;
+                            break;
                         }
 
-                        //Check if all are hidden
+                        
+                    }
+                //Check if all are hidden
+                var visible = false;
+                foreach (var item in CanvasGame.Children)
+                    if (item is Rectangle)
+                    {
+                        var rec = item as Rectangle;
                         if (rec.Visibility == Visibility.Visible && rec.Name != "Board")
                             visible = true;
                     }
+            
 
                 //When there are no block in the canvas
-                if (!visible)
+                        if (!visible)
                 {
                     act = () =>
                     {
