@@ -29,7 +29,8 @@ namespace Pong_Game
             //Get window size
             _gameWidth = (int)CanvasGame.ActualWidth;
             _gameHeight = (int)CanvasGame.ActualHeight;
-
+            this.Size.Content = "" + _gameWidth + "x" + _gameHeight;
+            _boardSpeedScreen = _gameHeight / 80;
             //Set Ball Location
             _ballLocX = _gameWidth / 2;
             _ballLocY = _gameHeight / 3;
@@ -98,6 +99,7 @@ namespace Pong_Game
         //Board variables
         private int _boardLoc = 10;
         private double _boardSpeed = 1;
+        private int _boardSpeedScreen = 10;
 
         //Blocks variables
         /// <summary>
@@ -347,8 +349,8 @@ namespace Pong_Game
             //Left arrow pressed. Move the board left
             if (e.Key == Key.Left)
             {
-                if (Canvas.GetLeft(Board) >= 10)
-                    Canvas.SetLeft(Board, Canvas.GetLeft(Board) - 10 * _boardSpeed);
+                if (Canvas.GetLeft(Board) >= _boardSpeedScreen)
+                    Canvas.SetLeft(Board, Canvas.GetLeft(Board) - _boardSpeedScreen * _boardSpeed);
                 else
                     Canvas.SetLeft(Board, 0);
             }
@@ -356,8 +358,8 @@ namespace Pong_Game
             //Right arrow pressed. Move the board right
             if (e.Key == Key.Right)
             {
-                if (Canvas.GetLeft(Board) <= _gameWidth - 10 * _boardSpeed - 150)
-                    Canvas.SetLeft(Board, Canvas.GetLeft(Board) + 10 * _boardSpeed);
+                if (Canvas.GetLeft(Board) <= _gameWidth - _boardSpeedScreen * _boardSpeed - 150)
+                    Canvas.SetLeft(Board, Canvas.GetLeft(Board) + _boardSpeedScreen * _boardSpeed);
                 else
                     Canvas.SetLeft(Board, _gameWidth - 150);
             }

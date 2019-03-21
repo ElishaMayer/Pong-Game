@@ -19,7 +19,7 @@
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Bottom">
                 <Label x:Name="xLabel" Content="Life: " FontSize="20" Margin="5" />
                 <Label x:Name="LifeLabel" FontSize="20" Content="0" Margin="5" />
-
+                <Label VerticalAlignment="Bottom" x:Name="Size" Margin="0,11,0,0" Content="SIze not availble"></Label>
             </StackPanel>
         </DockPanel>
         <Canvas Cursor="No" Background="Black" x:Name="CanvasGame" HorizontalAlignment="Stretch"
